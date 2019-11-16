@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <h2 class="bdbnone">커뮤니티</h2>
+  <form name="frm" action="/community/board_save.asp" method="post">
+    <input type="hidden" id="menu_id" name="menu_id" value="">
+    <input type="hidden" id="idx" name="idx" value="">
+    <input type="hidden" id="viewdate" name="viewdate" value="">
+    <input type="hidden" id="viewCate" name="viewCate" value="">
+   <table class ="tbl-y write">
+     <colgroup>
+       <col style="width:144px">
+       <col style="width:auto">
+     </colgroup>
+   </table>
+  </form>
+     <tbody>
+       <tr>
+         <th id="column_row">카테고리</th>
+         <td>
+           <div class="clfix">
+             <div class="select-wrap5">
+               <select id="category" class="select5" name="menu_id1" onchange="selSub();"
+                       <option value>게시판 선택</option>
+             <option value="4">비포&amp;애프터</option>
+             <option value="1">자극사진</option>
+             <option value="86">레시피</option>
+             <option value="126">꿀팁</option>
+             <option value="5">자유게시판</option>
+             </select>
+           <span class="select-arr5"></span>
+     </div>
+       <div ::after></div>
+     </div>
+    </td>
+  </tr>
+</tbody>
+<tr>
+  <th>제목</th>
+  <td>
+    <input type="text" class="ipt2" id="title" name="title" value style="width:546px">
+  </td>
+</tr>
+
+</table>
+      <div class="editor">
+        <ul class="se2_multy">
+                      <li class="se2_mn husky_seditor_ui_photo_attach">
+                        <button type="button" class="se2_photo ico_btn" style="float: right;>
+                          <span class="se2_mntxt">
+                            사진
+                            <span class="se2_new"></span>
+                          </span>
+                        </button>
+                      </li>
+
+        </ul>
+
+        <form>
+          <textarea name = "text" wrap="off" style="width:700px; height:460px">원하는내용을입력하세요. </textarea>
+        </form>
+        </head>
+
+       </div>
+        <center>
+            <br>
+                                                                              </br>
+        <div class="btn-ac">
+            <a href="javascript:;"><img src="https://www.dietshin.com/img/btn/btn_ok.gif" alt="확인" onclick="submitContents(this);"></a>
+            <a href="/community/bbs_main.asp"><img src="https://www.dietshin.com/img/btn/btn_cancel.gif" alt="취소"></a>
+
+        </div>
+        </center>
+
+</div>
+{% endblock %}

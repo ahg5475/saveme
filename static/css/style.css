@@ -1,0 +1,29 @@
+.bmi-search{border:1px solid #D7D7D7;border-bottom:none;border-top-left-radius:5px;border-top-right-radius:5px;margin:0;padding:0;text-align:center;background:#FFF;margin-bottom:0;}
+.bmi-search .col-3{width:33.3333333%;float:left;display:inline-block;}
+.bmi-search .col-3:first-child h3{border-top-left-radius:5px;}
+.bmi-search .col-3:first-child + .col-3{border-right:1px solid #D7D7D7;border-left:1px solid #D7D7D7;}
+.bmi-search .col-3:last-child h3{border-top-right-radius:5px;}
+.bmi-search .col-3 h3{margin:0;text-align:center;border-bottom:1px solid #D7D7D7;padding:10px 20px;font-size:15px;background:#F6F6F6;}
+.bmi-search .col-3 dl{padding:20px 20px 10px;margin:0;}
+.bmi-search .col-3 dl input{height:38px;width:115px;border:1px solid #D7D7D7;border-radius:3px;padding:0 7px;}
+.bmi-search .col-3 dl input[readonly]{border:1px solid #F90;}
+.bmi-search .col-3 dl label{visibility:visible !important;text-indent:0 !important;}
+.bmi-search .col-3 dl label input{width:55px;}
+.bmi-search .col-3 dl dt,.bmi-search .col-3 dl dd{float:left;display:inline-block;margin-bottom:10px;}
+.bmi-search .col-3 dl dt{clear:both;float:left;width:68px;text-align:left;padding-top:20px;}
+.bmi-search .col-3 .btn-default{padding:9px 15px;}
+.bmi-search .col-3 dl dd.dfull{width:183px;}
+.bmi-search .col-3 dl dd.ddfull > input{width:183px;}
+.bmi-search .col-3 dl dd.ddfull > .btn-default{width:183px;height:35px !important;line-height:5px;margin-bottom:0 !important;border-radius:3px !important;padding:18px !important;}
+.bmi-search:after,.bmi-search .col-3 dl:after{content:"\0020";display:block;height:0;overflow:hidden;clear:both;}
+h2 span,h3 span{display:inline-block;float:right;font-size:11px;font-weight:normal;color:#9797A6;}
+h2:after,h3:after{content:"\0020";display:block;height:0;overflow:hidden;clear:both;}
+table.bmi{margin:10px 0;}
+table.bmi thead th{padding:7px;}
+table.bmi tbody th,table.bmi td{text-align:center;font-size:12px;background:#FFF;padding:7px;}
+table.bmi th,table.bmi td{border-right:1px solid #D7D7D7;}
+table.bmi thead tr th:last-child,table.bmi tr td:last-child{border-right:none;}
+th.overweight,td.overweight,.overweight{background:#ECCE6F !important;color:#9C721A !important;}
+th.obesity,td.obesity,.obesity{background:#FB985B !important;color:#B23000 !important;}
+table.bmi tbody tr:hover td{cursor:auto;}
+table.bmi th span{font-size:11px;padding:2px;font-weight:normal;}
