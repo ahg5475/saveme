@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<br><br>
+<form method="POST" action="{% url 'lists_board:lists_board_insert' %}">
+	{%csrf_token%}
+
+	{{form.as_p}}
+		<button type="submit" class="save btn-dark" style="width=80px;">저장</button>
+
+</form>
+{% endblock content %}

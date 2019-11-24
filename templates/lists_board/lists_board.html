@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<table class="table table-striped table-hover" align=center width="100%" summary="">
+
+<tr>
+	<td width=50><p align=center>번호</p></td>
+	<td width=200><p align=center>제목</p></td>
+	<td width=90><p align=center>작성자</p> </td>
+	<td width=50><p align=center>조회수</p></td>
+	<td width=120"><p align=center>작성일</p></td>
+</tr>
+{% if result_list %}
+	<br><br>
+	<h4>전체</h4>
+<ul class="container">
+	{% for list in result_list %}
+	<tr>
+	<td width="50"><p align=center>{{ list.no }}</p></td>
+	<td width=150>
+		<p align=center>
+			<a href="{% url 'lists_board:lists_board_detail' pk=list.no %}">{{list.title}}</a>
+        </p>
+	</td>
+	<td width=110><p align=center>{{ list.user }}</p></td>
+	<td width=50><p align=center>{{ list.hits }}</p></td>
+	<td width=110><p align=center>{{ list.date }}</p></td>
+	</tr>
+	{% endfor %}
+{% else %}
+		<p align="center">NO Data</p>
+{% endif %}
+</ul>
+</table>
+{% if result_list.has_other_pages %}
+		<ul class = "pagination">
+		{% if result_list.has_previous %}
+		<li><a href="?page={{ result_list.previous_page_number }}">&laquo;</a></li>
+		{% else %}
+		<li class = "disabled"><span>&laquo;</span></li>
+		{% endif %}
+		{% if result_list.number > 2 %}
+		<li><a href="?page={{ 1 }}"> 1 </a></li>
+		<li ><span>...<span class="sr-only">...</span></span></li>
+		{% endif %}
+		{% for i in page_range %}
+		{% if result_list.number == i %}
+		<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+		{% else %}
+		<li><a href="?page={{ i }}">{{ i }}</a></li>
+		{% endif %}
+		{% endfor %}
+
+		{% if result_list.number < max_index %}
+		<li ><span>...<span class="sr-only">...</span></span></li>
+		<li><a href="?page={{ max_index|add:'2' }}">{{ max_index|add:"2" }}</a></li>
+		{% endif %}
+
+		{% if result_list.has_next %}
+		<li><a href="?page={{ result_list.next_page_number }}">&raquo;</a></li>
+		{% else %}
+		<li class="disabled"><span>&raquo;</span></li>
+		{% endif %}
+			</ul>
+		{%endif%}
+	</ul>
+<br>
+<button type="button" class="btn btn-sm" onclick="location.href='{% url 'lists_board:lists_board_insert' %}'">
+		글쓰기
+</button>
+{% endblock content %}

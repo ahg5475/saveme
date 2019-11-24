@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<section id="post">
+	<div class="container">
+		<h2>{{list.title}}</h2>
+		<p>{{list.content | linebreaksbr}}</p><br>
+	</div>
+</section>
+{% endblock content %}

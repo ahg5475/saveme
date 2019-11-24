@@ -1,15 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/blog/">
-  <link rel="stylesheet" type="text/css" href="C:\Users\ahg54\PycharmProjects\saveme\config\static\css\style.css">
-  <meta charset="utf-8">
+  <meta charset="utf-8" http-equiv="Content-type" content="text/html;">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>DAPPAJYEO</title>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    -webkit-text-size-adjust: none;
+    font-family: 'Nanum Gothic Coding';
+}
+.zeta-menu-bar {
+  display: inline-block;
+  width: 100%;
+}
+.zeta-menu { margin: 0; padding: 0; }
+.zeta-menu li {
+  float: left;
+  list-style:none;
+  position: relative;
+}
+.zeta-menu li:hover>a { color: #FF9391;  }
+.zeta-menu a {
+  color: white;
+  display: block;
+  padding: 6px 22.4px;
+  text-decoration: none;
+  float:left;
+}
+.zeta-menu ul {
+  background: white;
+  display: none;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 495px;
+}
+
+.zeta-menu ul li { float: none; }
+.zeta-menu ul li:hover a { color: black;  color: #FF9391; }
+.zeta-menu ul a { color: black; }
+.zeta-menu ul ul { left: 100%; top: 0; }
+.zeta-menu ul ul li {float:left; margin-right:10px;}
+</style>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+<script>
+$(function(){
+  $(".zeta-menu li").hover(function(){
+    $('ul:first',this).show();
+  }, function(){
+    $('ul:first',this).hide();
+  });
+  $(".zeta-menu>li:has(ul)>a").each( function() {
+    $(this).html( $(this).html()+' &or;' );
+  });
+  $(".zeta-menu ul li:has(ul)")
+    .find("a:first")
+    .append("<p style='float:right;margin:-3px'>&#9656;</p>");
+});
+</script>
 </head>
 <body style="background-color: #ffc3c3">
     <div class="container">
@@ -17,28 +79,49 @@
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
             {% if user.is_authenticated %}
-            {{user.last_name}}{{user.first_name}}님 환영합니다.
+              <a style=" font-size:1em; color: white">{{user.first_name}}{{user.last_name}}님 환영합니다!</a>
             <a class="btn btn-sm btn-outline-light" href="{% url 'accounts:logout' %}">로그아웃</a>
             {% else %}
             <a class="btn btn-sm btn-outline-light" href="{% url 'accounts:login' %}">로그인</a>
             {% endif %}
           </div>
           <div class="col-4 text-center">
-             <a class="blog-header-logo text-white" href="http://127.0.0.1:8000"><h2>DAPPAJYEO</h2></a>
+             <a class="blog-header-logo text-white" href="http://127.0.0.1:8000"><h1>DAPPAJYEO</h1></a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="btn btn-sm btn-outline-light" href="http://127.0.0.1:8000/accounts/signup">Sign up</a>
+              {% if user.is_authenticated %}
+              <a style=" font-size:0.9em; color: white">for your beauty</a>
+              {% else %}
+                <a class="btn btn-sm btn-outline-light" href="http://127.0.0.1:8000/accounts/signup">Sign up</a>
+              {% endif %}
           </div>
         </div>
       </header>
-      <div class="nav nav-tabs" role="tablist" style="border-bottom: 1px solid #fff">
-         <nav class="nav justify-content-center" style="color: #495057; background-color: #ffc3c3; border-color: #fff #fff #fff;width: 400px; padding-top: 10px;padding-bottom: 10px;">
-           <li><a class="p-2 text-white" href="http://127.0.0.1:8000">HOME</a></li>
-           <li><a class="p-2 text-white" href="http://127.0.0.1:8000/training">홈트레이닝</a></li>
-           <li><a class="p-2 text-white" href="http://127.0.0.1:8000/calculrator">비만도측정기</a></li>
-           <li><a class="p-2 text-white" href="http://127.0.0.1:8000/notice">게시판</a></li>
-         </nav>
-      </div>
+         <div class="zeta-menu-bar nav" style="border-bottom: 1px solid #fff">
+            <ul class="zeta-menu nav d-flex justify-content-between" style=" background-color: #ffc3c3; border-color: #fff #fff #fff;width: 400px; padding-top: 10px;padding-bottom: 10px;">
+              <li><a class="p-2" href="http://127.0.0.1:8000">HOME</a></li>
+              <li><a class="p-2" href="http://127.0.0.1:8000/training">홈트레이닝</a>
+                 <ul>
+                     <li><a href="http://127.0.0.1:8000">전신운동</a></li>
+                     <li><a href="http://127.0.0.1:8000">복부운동</a></li>
+                     <li><a href="http://127.0.0.1:8000">상체운동</a></li>
+                     <li><a href="http://127.0.0.1:8000">하체운동</a></li>
+                     <li><a href="http://127.0.0.1:8000">댄스</a></li>
+                  </ul>
+              </li>
+              <li><a class="p-2" href="http://127.0.0.1:8000/calculrator">비만도측정기</a></li>
+              <li><a class="p-2" href="http://127.0.0.1:8000/lists_board/">게시판</a>
+                  <ul>
+                     <li><a href="http://127.0.0.1:8000/lists_board/">전체</a></li>
+                     <li><a href="http://127.0.0.1:8000">before & after</a></li>
+                     <li><a href="http://127.0.0.1:8000">자극사진</a></li>
+                     <li><a href="http://127.0.0.1:8000">레시피</a></li>
+                     <li><a href="http://127.0.0.1:8000">꿀팁</a></li>
+                </ul>
+              </li>
+
+            </ul>
+       </div>
       {% block content %}
       {% endblock %}
     </div>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<section id="post">
+  <div class="container">
+   <form method="POST" class="post-form">
+       {%csrf_token%}
+
+       {{form.as_p}}
+       <button type="submit" value="save" class="save btn btn-default">저장</button>
+   </form>
+  </div>
+</section>
+{% endblock content %}

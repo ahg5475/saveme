@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
+<br><br><br>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 <div class="page-container">
 	     <article class="full">
 	             <fieldset>
-	                 <legend>BMI검색</legend>
+	                 <legend style="border-bottom:1px solid white; color: white;">BMI검색</legend>
 	                 <div class="bmi-search">
 	                     <div class="col-3">
 	                         <h3>성별정보</h3>

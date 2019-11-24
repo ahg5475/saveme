@@ -1,5 +1,94 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<div class="row text-center">
+    <script>
+    function id_overlap_check() {
 
+    $('.username_input').change(function () {
+      $('#id_check_sucess').hide();
+      $('.id_overlap_button').show();
+      $('.username_input').attr("check_result", "fail");
+    })
+
+    if ($('.username_input').val() == '') {
+      alert('아이디를 입력해주세요.')
+      return;
+    }
+
+    id_overlap_input = document.querySelector('input[name="username"]');
+
+
+    $.ajax({
+      url: "{% url 'accounts:id_overlap_check' %}",
+      data: {
+        'username': id_overlap_input.value
+      },
+      datatype: 'json',
+      success: function (data) {
+        console.log(data['overlap']);
+        if (data['overlap'] == "fail") {
+          alert("이미 존재하는 아이디 입니다.");
+          id_overlap_input.focus();
+          return;
+        } else {
+          alert("사용가능한 아이디 입니다.");
+          $('.username_input').attr("check_result", "success");
+          $('#id_check_sucess').show();
+          $('.id_overlap_button').hide();
+          return;
+         }
+      }
+    });
+  }
+</script>
+	    <div class="col-md-6 offset-md-3" style="padding-top: 200px;">
+	        <div class="card">
+	            <div class="card-body">
+	                <div class="login-title">
+	                    <h5>Sign up</h5>
+	                </div>
+	                <div class="login-form mt-4">
+	                    <form id="join-form" method="POST" action="{% url 'accounts:signup' %}">
+                            {% csrf_token %}
+                        <div class="form-row">
+                            {% if error %}
+                            <h6 style="text-align: center; color:red">{{error}}</h6>
+                            {% endif %}
+                            <div class="form-group col-md-12">
+                              <input type="text" name="username" check_result="fail" required class="username_input form-control" type="text" placeholder="Username">
+                                <button type="button" class="btn btn-sm btn-outline-dark id_overlap_button" onclick="id_overlap_check()">중복검사</button>
+                                <img id="id_check_sucess" style="display: none;">
+                            </div>
+                            <div class="form-group col-md-12">
+                              <input type="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+                            <div class="form-group col-md-12">
+                              <input type="password" name="password_check" class="form-control" placeholder="Confirm Password">
+                            </div>
+                            <div class="form-group col-md-12">
+                              <input type="text" name="first_name" class="form-control" placeholder="first name">
+                            </div>
+                            <div class="form-group col-md-12">
+                              <input type="text" name="last_name" class="form-control" placeholder="last name">
+                            </div>
+                            <div class="form-group col-md-12">
+                              <input type="email" name="email" class="form-control" placeholder="email">
+                            </div>
+                          </div>
+                         <div class="form-row">
+                        <div class="form-group">
+                              </div>
+                    </div>
+                        <div class="form-row">
+                            {{ form.as_p }}
+                            <button type="submit" value="sign up" class="btn btn-dark btn-block">Sign up</button>
+                        </div>
+                    </form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+<br><br><br><br>
 {% endblock %}

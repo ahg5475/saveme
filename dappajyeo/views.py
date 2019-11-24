@@ -9,5 +9,3 @@ def training(request):
 def calculator(request):
     return render(request, 'Calculator/bmi.html')
 
-def notice(request):
-    return render(request, 'notice/comunity.html')

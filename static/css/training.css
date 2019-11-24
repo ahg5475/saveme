@@ -1,0 +1,22 @@
+.contents.training h3{color:#2e2e2e;font-size:16px;font-weight:bold;margin:10px 0 15px;padding:0;border:0 none}
+
+.gall-wrap2{ width:1000px;overflow:hidden}
+.gall-wrap2.bdt{padding-top:15px;border-top:2px solid #000;}
+.gall-list02{margin-right:20px}
+.gall-list02>li{float:left;width:300px;height:225px;margin-right:12px}
+.gall-list02>li>a{display:block}
+.gall-list02>li .pic{padding:1px 0 0 1px;position:relative;width:300px;height:137px;overflow:hidden}
+.gall-list02>li .pic .frame{position:absolute;left:0;top:0;width:300px;height:137px;}
+.gall-list02>li .pic .ico-play{position:absolute;left:0;top:0;width:300px;height:137px;display:none}
+.gall-list02>li>a:hover  .pic .ico-play{display:block}
+.gall-list02>li .txt{line-height:1.4}
+.clfix {
+    display: block;
+    display: inline-block;
+}
+
+li {
+    list-style: none;
+}
+
+
